@@ -1,73 +1,41 @@
-/* Dice selector grid */
-.dice-grid {
+/* Die type buttons row */
+.die-btn-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
   margin-bottom: 28px;
 }
 
-.die-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 16px 20px;
+.die-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  min-width: 100px;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  cursor: default;
+  gap: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  font-family: inherit;
 }
 
-.die-card:hover {
+.die-btn:hover {
   border-color: var(--green-dim);
-  box-shadow: 0 0 14px var(--green-glow2);
+  box-shadow: 0 0 16px var(--green-glow2);
+  transform: translateY(-2px);
 }
 
-.die-label {
-  font-size: 0.78rem;
+.die-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.die-btn-label {
+  font-size: 0.75rem;
   font-weight: 800;
   color: var(--text-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.die-count-ctrl {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.count-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text-muted);
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  transition: all 0.12s;
-  font-family: inherit;
-}
-.count-btn:hover {
-  background: var(--bg-card2);
-  border-color: var(--green-dim);
-  color: var(--green);
-  box-shadow: 0 0 8px var(--green-glow2);
-}
-
-.count-val {
-  min-width: 22px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--text);
 }
 
 /* Results panel */
@@ -79,11 +47,10 @@
   box-shadow: 0 0 24px var(--green-glow2);
 }
 
-.results-rolling,
 .results-dice {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 16px;
   justify-content: center;
   margin-bottom: 18px;
 }
@@ -92,7 +59,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  animation: die-appear 0.18s ease-out;
+}
+
+@keyframes die-appear {
+  from { opacity: 0; transform: scale(0.7) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .result-label {
@@ -123,7 +96,16 @@
 }
 
 /* Canvas 3D die */
-.die-canvas {
-  display: block;
-  border-radius: 6px;
+.die-canvas { display: block; border-radius: 6px; }
+
+/* Ghost button variant */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.btn-ghost:hover {
+  border-color: var(--green-dim);
+  color: var(--green);
+  box-shadow: 0 0 10px var(--green-glow2);
 }
