@@ -1,15 +1,19 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    proxy: {
-      "/campaign": "http://localhost:3000",
-      "/players": "http://localhost:3000",
-      "/aliens": "http://localhost:3000",
-      "/combat-log": "http://localhost:3000",
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  const apiUrl = env.VITE_API_URL || 'http://localhost:3000'
+
+  return {
+    plugins: [react()],
+    server: {
+      proxy: {
+        '/campaign': apiUrl,
+        '/players': apiUrl,
+        '/aliens': apiUrl,
+        '/combat-log': apiUrl,
+      },
     },
-  },
+  }
 })
