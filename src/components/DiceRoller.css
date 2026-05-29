@@ -1,0 +1,141 @@
+/* Dice selector grid */
+.dice-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.die-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 100px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  cursor: default;
+}
+
+.die-card:hover {
+  border-color: var(--green-dim);
+  box-shadow: 0 0 14px var(--green-glow2);
+}
+
+.die-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.die-count-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.count-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all 0.12s;
+  font-family: inherit;
+}
+.count-btn:hover {
+  background: var(--bg-card2);
+  border-color: var(--green-dim);
+  color: var(--green);
+  box-shadow: 0 0 8px var(--green-glow2);
+}
+
+.count-val {
+  min-width: 22px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+/* Results panel */
+.results-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hover);
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 0 24px var(--green-glow2);
+}
+
+.results-rolling,
+.results-dice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.result-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.result-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.results-total {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.results-total span {
+  color: var(--green);
+  font-size: 2.2rem;
+  display: block;
+  text-shadow: 0 0 18px var(--green-glow), 0 0 36px rgba(31,255,110,0.2);
+  line-height: 1.2;
+}
+
+/* SVG die */
+.die-svg { display: block; }
+
+/* Roll animation */
+@keyframes die-spin {
+  0%   { transform: rotate(0deg)   scale(1); }
+  25%  { transform: rotate(90deg)  scale(1.18); }
+  50%  { transform: rotate(180deg) scale(0.88); }
+  75%  { transform: rotate(270deg) scale(1.12); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.die-svg.rolling {
+  animation: die-spin 0.42s ease-in-out infinite;
+  transform-origin: center center;
+  filter: drop-shadow(0 0 6px var(--green));
+}
