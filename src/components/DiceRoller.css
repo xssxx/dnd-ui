@@ -122,20 +122,8 @@
   line-height: 1.2;
 }
 
-/* SVG die */
-.die-svg { display: block; }
-
-/* Roll animation */
-@keyframes die-spin {
-  0%   { transform: rotate(0deg)   scale(1); }
-  25%  { transform: rotate(90deg)  scale(1.18); }
-  50%  { transform: rotate(180deg) scale(0.88); }
-  75%  { transform: rotate(270deg) scale(1.12); }
-  100% { transform: rotate(360deg) scale(1); }
-}
-
-.die-svg.rolling {
-  animation: die-spin 0.42s ease-in-out infinite;
-  transform-origin: center center;
-  filter: drop-shadow(0 0 6px var(--green));
+/* Canvas 3D die */
+.die-canvas {
+  display: block;
+  border-radius: 6px;
 }
